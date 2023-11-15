@@ -1,0 +1,34 @@
+container: {type: ColumnPanel}
+components:
+- name: xy_panel_1
+  properties: {height: '600', spacing_above: none, spacing_below: none}
+  type: XYPanel
+  layout_properties: {grid_position: 'OCKIOB,CMXLUY', full_width_row: true}
+  components:
+  - name: map_1
+    properties: {height: 497}
+    type: GoogleMap
+    layout_properties: {x: 124.78125, y: 45.28125, width: 738}
+  - name: button_1
+    properties: {text: Files, align: left, icon: 'fa:list'}
+    type: Button
+    layout_properties: {x: 17.046875, y: 75.640625, width: 81}
+    event_bindings: {show: button_1_show}
+  - name: enemy_drop_down
+    properties: {placeholder: Enemy, include_placeholder: true, align: left}
+    type: DropDown
+    layout_properties: {x: 14.09375, y: 126.59375, width: 100.6875}
+  - name: friendly_drop_down
+    properties:
+      include_placeholder: false
+      items: [Friendly]
+      align: left
+    type: DropDown
+    layout_properties: {x: 16.640625, y: 166.140625, width: 93.265625}
+  - name: fcm_drop_down
+    properties:
+      items: [FCM]
+      align: left
+    type: DropDown
+    layout_properties: {x: 18.546875, y: 204.046875, width: 200}
+is_package: true
