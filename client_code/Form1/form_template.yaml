@@ -18,20 +18,23 @@ components:
     properties: {text: 'Intel Summary: Enemy disposition', visible: true}
     type: TextBox
     layout_properties: {x: 127.09375, y: 499.59375, width: 200}
-  - name: friendly_overlay
+  - name: friendly_check
     properties: {text: Friendly Situation}
     type: CheckBox
     layout_properties: {x: 867.546875, y: 117.046875, width: 132}
+    event_bindings: {change: friendly_check_change}
   - name: weather_situation
     properties: {text: Weather Situation}
     type: CheckBox
     layout_properties: {x: 866.546875, y: 226.046875, width: 131}
+    event_bindings: {change: weather_situation_change}
   - name: cultural_situation
     properties: {text: Civil Considerations}
     type: CheckBox
     layout_properties: {x: 864.953125, y: 166.6875, width: 143.046875}
-  - name: check_box_1
-    properties: {text: check_box_1}
+    event_bindings: {change: cultural_situation_change}
+  - name: fcm_check
+    properties: {text: FCM}
     type: CheckBox
     layout_properties: {x: 864.046875, y: 280.546875, width: 126}
   - name: button_1
