@@ -7,56 +7,36 @@ from anvil.tables import app_tables
 
 class Form1(Form1Template):
   def __init__(self, **properties):
-    # Set Form properties and Data Bindings.
+
+    # set checklist initially visible
     self.init_components(**properties)
+    self.enemy_situation_check.visible = True
+    self.friendly_situation_check.visible = True
+    self.intelligence_label.visible = True
+    self.cultural_check.visible = True
+    self.weather_situation_check.visible = True
+    self.fcm_check.visible = True
+    self.acm_check.visible = True
+    self.tcm_check.visible = True
+  
 
-    # Any code you write here will run before the form opens.
+  ####Visibility of Checklist####
 
-  def linear_panel_1_show(self, **event_args):
-    """This method is called when the linear panel is shown on the screen"""
-    pass
+  def toggle_visibility_multiple(self, components):
+    """Toggle visibility of multiple components"""
+    for component in components:
+        component.visible = not component.visible
 
-  def enemy_overlay1_change(self, **event_args):
-    """This method is called when this checkbox is checked or unchecked"""
-    pass
-
-  def button_1_click(self, **event_args):
+  def check_list_button_click(self, **event_args):
     """This method is called when the button is clicked"""
-    pass
-
-  def enemy_drop_down_change(self, **event_args):
-    """This method is called when an item is selected"""
-    pass
-
-  def friendly_drop_down_change(self, **event_args):
-    """This method is called when an item is selected"""
-    pass
-
-  def fcm_drop_down_change(self, **event_args):
-    """This method is called when an item is selected"""
-    pass
-
-  def tcm_drop_down_change(self, **event_args):
-    """This method is called when an item is selected"""
-    pass
-
-  def acm_drop_down_change(self, **event_args):
-    """This method is called when an item is selected"""
-    pass
-
-  def intel_drop_down_change(self, **event_args):
-    """This method is called when an item is selected"""
-    pass
-
-  def friendly_check_change(self, **event_args):
-    """This method is called when this checkbox is checked or unchecked"""
-    pass
-
-  def cultural_situation_change(self, **event_args):
-    """This method is called when this checkbox is checked or unchecked"""
-    pass
-
-  def weather_situation_change(self, **event_args):
-    """This method is called when this checkbox is checked or unchecked"""
-    pass
-
+    components_to_toggle = [
+        self.enemy_situation_check,
+        self.friendly_situation_check,
+        self.intelligence_label,
+        self.cultural_check,
+        self.weather_situation_check,
+        self.fcm_check,
+        self.acm_check,
+        self.tcm_check
+    ]
+    self.toggle_visibility_multiple(components_to_toggle)

@@ -1,15 +1,16 @@
 allow_embedding: false
-package_name: Custom_HTML_1
+package_name: HCI_Proj_4
 db_schema:
   table_1:
     client: none
     server: full
     columns: []
     title: Table 1
-name: Custom HTML 1
+name: HCI Proj 4
 startup_form: Form1
 runtime_options: {version: 2, client_version: '3', server_version: python3-sandbox,
   server_spec: null}
+metadata: {description: HCI Proj 4, title: HCI Proj 4}
 services:
 - source: /runtime/services/tables.yml
   client_config: {}

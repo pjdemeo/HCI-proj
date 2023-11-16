@@ -1,64 +1,40 @@
 container: {type: ColumnPanel}
 components:
 - name: xy_panel_1
-  properties: {height: '600', spacing_above: none, spacing_below: none, background: '#505050'}
+  properties: {height: 882, spacing_above: none, spacing_below: none, background: '#505050'}
   type: XYPanel
   layout_properties: {grid_position: 'OCKIOB,CMXLUY', full_width_row: true, row_background: '#747272'}
   components:
-  - name: map_1
-    properties: {height: 497}
-    type: GoogleMap
-    layout_properties: {x: 124.78125, y: 45.28125, width: 738}
-  - name: enemy_overlay1
-    properties: {text: Enemy Situation, allow_indeterminate: false}
-    type: CheckBox
-    layout_properties: {x: 869.046875, y: 60.046875, width: 124}
-    event_bindings: {change: enemy_overlay1_change}
-  - name: text_box_1
-    properties: {text: 'Intel Summary: Enemy disposition', visible: true}
-    type: TextBox
-    layout_properties: {x: 127.09375, y: 499.59375, width: 200}
-  - name: friendly_check
-    properties: {text: Friendly Situation}
-    type: CheckBox
-    layout_properties: {x: 867.546875, y: 117.046875, width: 132}
-    event_bindings: {change: friendly_check_change}
-  - name: weather_situation
-    properties: {text: Weather Situation}
-    type: CheckBox
-    layout_properties: {x: 866.546875, y: 226.046875, width: 131}
-    event_bindings: {change: weather_situation_change}
-  - name: cultural_situation
-    properties: {text: Civil Considerations}
-    type: CheckBox
-    layout_properties: {x: 864.953125, y: 166.6875, width: 143.046875}
-    event_bindings: {change: cultural_situation_change}
-  - name: fcm_check
-    properties: {text: FCM}
-    type: CheckBox
-    layout_properties: {x: 864.046875, y: 280.546875, width: 126}
   - name: button_1
     properties: {text: Files, align: left, icon: 'fa:list', background: '', foreground: ''}
     type: Button
     layout_properties: {x: 15.640625, y: 39.734375, width: 72}
     event_bindings: {show: button_1_show, click: button_1_click}
   - name: enemy_drop_down
-    properties: {placeholder: Enemy, include_placeholder: true, align: left, background: '#ce5f5f',
-      bold: true, foreground: '#ffffff'}
+    properties:
+      placeholder: Enemy
+      include_placeholder: true
+      align: left
+      background: '#ce5f5f'
+      bold: true
+      foreground: '#ffffff'
+      items: [Infantry, Artillery, Armor]
     type: DropDown
     layout_properties: {x: 14.234375, y: 87.234375, width: 100.6875}
-    event_bindings: {change: enemy_drop_down_change}
+    event_bindings: {show: enemy_drop_down_show}
   - name: friendly_drop_down
     properties:
-      include_placeholder: false
-      items: [Friendly]
+      include_placeholder: true
+      items: [Infantry, Artillery, Tank]
       align: left
       background: '#7171d6'
       bold: true
       foreground: '#ffffff'
+      placeholder: Friendly
     type: DropDown
-    layout_properties: {x: 12.28125, y: 133.28125, width: 65.25}
-    event_bindings: {change: friendly_drop_down_change}
+    layout_properties: {x: 12.28125, y: 133.28125, width: 104.8125}
+    event_bindings: {show: friendly_drop_down_show}
+    data_bindings: []
   - name: fcm_drop_down
     properties:
       items: [FCM]
@@ -67,25 +43,84 @@ components:
     type: DropDown
     layout_properties: {x: 12.640625, y: 173.140625, width: 82.453125}
     event_bindings: {change: fcm_drop_down_change}
-  - name: acm_drop_down
-    properties:
-      align: left
-      items: [ACM]
-      bold: true
-    type: DropDown
-    layout_properties: {x: 13.828125, y: 261.328125, width: 87}
-    event_bindings: {change: acm_drop_down_change}
   - name: tcm_drop_down
     properties:
       items: [TCM]
       align: left
       bold: true
     type: DropDown
-    layout_properties: {x: 15.328125, y: 211.828125, width: 81.359375}
+    layout_properties: {x: 9.375, y: 213.875, width: 81.359375}
     event_bindings: {change: tcm_drop_down_change}
+  - name: acm_drop_down
+    properties:
+      align: left
+      items: [ACM]
+      bold: true
+    type: DropDown
+    layout_properties: {x: 9.875, y: 262.375, width: 87}
+    event_bindings: {change: acm_drop_down_change}
   - name: intel_drop_down
     properties: {placeholder: Intel, bold: true, include_placeholder: true, align: left}
     type: DropDown
-    layout_properties: {x: 15.046875, y: 310.546875, width: 200}
+    layout_properties: {x: 9.09375, y: 308.59375, width: 200}
     event_bindings: {change: intel_drop_down_change}
+  - name: map_1
+    properties: {height: 644}
+    type: GoogleMap
+    layout_properties: {x: 238.203125, y: 38.703125, width: 1102.765625}
+  - name: check_list_button
+    properties: {text: Hide/Show Checklist, align: left}
+    type: Button
+    layout_properties: {x: 1465.09375, y: 10.234375, width: 155}
+    event_bindings: {click: check_list_button_click}
+  - name: enemy_situation_check
+    properties: {text: Enemy Situation, allow_indeterminate: false, foreground: '#ffffff'}
+    type: CheckBox
+    layout_properties: {x: 1469.234375, y: 70.234375, width: 124}
+    event_bindings: {show: enemy_situation_check_show, hide: enemy_situation_check_hide}
+  - name: friendly_situation_check
+    properties: {text: Friendly Situation, foreground: '#ffffff'}
+    type: CheckBox
+    layout_properties: {x: 1467.734375, y: 127.234375, width: 132}
+    event_bindings: {show: friendly_situation_check_show}
+  - name: intelligence_label
+    properties: {text: Intelligence, bold: true, foreground: '#ffffff'}
+    type: Label
+    layout_properties: {x: 1470.28125, y: 170.28125, width: 200}
+    event_bindings: {show: intelligence_label_show}
+  - name: cultural_check
+    properties: {text: Civil Considerations, foreground: '#ffffff'}
+    type: CheckBox
+    layout_properties: {x: 1495.375, y: 201.109375, width: 143.046875}
+    event_bindings: {show: cultural_check_show}
+  - name: weather_situation_check
+    properties: {text: Weather Situation, foreground: '#ffffff'}
+    type: CheckBox
+    layout_properties: {x: 1522.921875, y: 258.421875, width: 131}
+    event_bindings: {change: weather_situation_check_change, show: weather_situation_check_show}
+  - name: fcm_check
+    properties: {text: FCM, foreground: '#ffffff'}
+    type: CheckBox
+    layout_properties: {x: 1498.375, y: 323.875, width: 126}
+    event_bindings: {show: fcm_check_show}
+  - name: acm_check
+    properties: {text: ACM, foreground: '#ffffff'}
+    type: CheckBox
+    layout_properties: {x: 1497.421875, y: 361.421875, width: 200}
+  - name: tcm_check
+    properties: {text: TCM, foreground: '#ffffff'}
+    type: CheckBox
+    layout_properties: {x: 1498.328125, y: 398.328125, width: 200}
+  - name: text_box_1
+    properties: {text: 'Intel Summary: Notional Summary of enemy situatoin', visible: true}
+    type: TextBox
+    layout_properties: {x: 1471.515625, y: 531.015625, width: 293.140625}
+  - name: hide_fr
+    properties: {text: '', icon: 'fa:eye-slash', align: left, bold: true}
+    type: Button
+    layout_properties: {x: 129.09375, y: 130.09375, width: 37}
+  - name: hide_en
+    properties: {text: '', icon: 'fa:eye-slash', align: left}
+    type: Button
+    layout_properties: {x: 129.140625, y: 86.140625, width: 40}
 is_package: true
