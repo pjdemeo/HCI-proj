@@ -1,7 +1,7 @@
 container: {type: ColumnPanel}
 components:
 - name: xy_panel_1
-  properties: {height: '600', spacing_above: none, spacing_below: none}
+  properties: {height: '600', spacing_above: none, spacing_below: none, background: '#505050'}
   type: XYPanel
   layout_properties: {grid_position: 'OCKIOB,CMXLUY', full_width_row: true, row_background: '#747272'}
   components:
@@ -9,43 +9,80 @@ components:
     properties: {height: 497}
     type: GoogleMap
     layout_properties: {x: 124.78125, y: 45.28125, width: 738}
-  - name: button_1
-    properties: {text: Files, align: left, icon: 'fa:list'}
-    type: Button
-    layout_properties: {x: 17.046875, y: 75.640625, width: 81}
-    event_bindings: {show: button_1_show}
-  - name: enemy_drop_down
-    properties: {placeholder: Enemy, include_placeholder: true, align: left}
-    type: DropDown
-    layout_properties: {x: 17.140625, y: 116.140625, width: 100.6875}
-  - name: friendly_drop_down
-    properties:
-      include_placeholder: false
-      items: [Friendly]
-      align: left
-    type: DropDown
-    layout_properties: {x: 16.1875, y: 156.1875, width: 65.25}
-  - name: fcm_drop_down
-    properties:
-      items: [FCM]
-      align: left
-    type: DropDown
-    layout_properties: {x: 15.59375, y: 191.09375, width: 200}
-  - name: tcm_drop_down
-    properties:
-      items: [TCM]
-      align: left
-    type: DropDown
-    layout_properties: {x: 16.6875, y: 227.6875, width: 200}
-  - name: acm_drop_down
-    properties:
-      align: left
-      items: [ACM]
-    type: DropDown
-    layout_properties: {x: 19.1875, y: 266.1875, width: 200}
   - name: enemy_overlay1
     properties: {text: Enemy Situation, allow_indeterminate: false}
     type: CheckBox
     layout_properties: {x: 869.046875, y: 60.046875, width: 124}
     event_bindings: {change: enemy_overlay1_change}
+  - name: text_box_1
+    properties: {text: 'Intel Summary: Enemy disposition', visible: true}
+    type: TextBox
+    layout_properties: {x: 127.09375, y: 499.59375, width: 200}
+  - name: friendly_overlay
+    properties: {text: Friendly Situation}
+    type: CheckBox
+    layout_properties: {x: 867.546875, y: 117.046875, width: 132}
+  - name: weather_situation
+    properties: {text: Weather Situation}
+    type: CheckBox
+    layout_properties: {x: 866.546875, y: 226.046875, width: 131}
+  - name: cultural_situation
+    properties: {text: Civil Considerations}
+    type: CheckBox
+    layout_properties: {x: 864.953125, y: 166.6875, width: 143.046875}
+  - name: check_box_1
+    properties: {text: check_box_1}
+    type: CheckBox
+    layout_properties: {x: 864.046875, y: 280.546875, width: 126}
+  - name: button_1
+    properties: {text: Files, align: left, icon: 'fa:list', background: '', foreground: ''}
+    type: Button
+    layout_properties: {x: 15.640625, y: 39.734375, width: 72}
+    event_bindings: {show: button_1_show, click: button_1_click}
+  - name: enemy_drop_down
+    properties: {placeholder: Enemy, include_placeholder: true, align: left, background: '#ce5f5f',
+      bold: true, foreground: '#ffffff'}
+    type: DropDown
+    layout_properties: {x: 14.234375, y: 87.234375, width: 100.6875}
+    event_bindings: {change: enemy_drop_down_change}
+  - name: friendly_drop_down
+    properties:
+      include_placeholder: false
+      items: [Friendly]
+      align: left
+      background: '#7171d6'
+      bold: true
+      foreground: '#ffffff'
+    type: DropDown
+    layout_properties: {x: 12.28125, y: 133.28125, width: 65.25}
+    event_bindings: {change: friendly_drop_down_change}
+  - name: fcm_drop_down
+    properties:
+      items: [FCM]
+      align: left
+      bold: true
+    type: DropDown
+    layout_properties: {x: 12.640625, y: 173.140625, width: 82.453125}
+    event_bindings: {change: fcm_drop_down_change}
+  - name: acm_drop_down
+    properties:
+      align: left
+      items: [ACM]
+      bold: true
+    type: DropDown
+    layout_properties: {x: 13.828125, y: 261.328125, width: 87}
+    event_bindings: {change: acm_drop_down_change}
+  - name: tcm_drop_down
+    properties:
+      items: [TCM]
+      align: left
+      bold: true
+    type: DropDown
+    layout_properties: {x: 15.328125, y: 211.828125, width: 81.359375}
+    event_bindings: {change: tcm_drop_down_change}
+  - name: intel_drop_down
+    properties: {placeholder: Intel, bold: true, include_placeholder: true, align: left}
+    type: DropDown
+    layout_properties: {x: 15.046875, y: 310.546875, width: 200}
+    event_bindings: {change: intel_drop_down_change}
 is_package: true
