@@ -34,7 +34,8 @@ components:
     type: DropDown
     layout_properties: {x: 12.28125, y: 133.28125, width: 104.8125}
     event_bindings: {show: friendly_drop_down_show}
-    data_bindings: []
+    data_bindings:
+    - {property: items, code: 'self.item[''Infantry'']', writeback: false}
   - name: fcm_drop_down
     properties:
       items: [FCM]
@@ -128,3 +129,4 @@ components:
     type: Image
     layout_properties: {x: 21.041662853211164, y: 368.7083536796272, width: 200}
 is_package: true
+custom_component: false
