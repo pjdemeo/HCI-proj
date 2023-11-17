@@ -4,6 +4,8 @@ import anvil.server
 import anvil.tables as tables
 import anvil.tables.query as q
 from anvil.tables import app_tables
+import random
+import time
 
 class Form1(Form1Template):
   def __init__(self, **properties):
@@ -18,7 +20,7 @@ class Form1(Form1Template):
     self.fcm_check.visible = True
     self.acm_check.visible = True
     self.tcm_check.visible = True
-  
+    self.image_1.visible = False  
 
   ####Visibility of Checklist####
 
@@ -40,3 +42,14 @@ class Form1(Form1Template):
         self.tcm_check
     ]
     self.toggle_visibility_multiple(components_to_toggle)
+
+  def enemy_drop_down_change(self, **event_args):
+    """This method is called when items in the enemy drop are selected"""
+    self.image_1.source = None
+    coins = ['http://re-bol.com/heads.jpg', 'http://re-bol.com/tails.jpg']
+    coin = random.choice(coins)
+    # time.sleep(1)
+    self.image_1.source = URLMedia(coin)
+    self.image_1.visible = not self.image_1.visible
+
+

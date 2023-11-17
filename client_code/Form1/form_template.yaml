@@ -21,7 +21,7 @@ components:
       items: [Infantry, Artillery, Armor]
     type: DropDown
     layout_properties: {x: 14.234375, y: 87.234375, width: 100.6875}
-    event_bindings: {show: enemy_drop_down_show}
+    event_bindings: {show: enemy_drop_down_show, change: enemy_drop_down_change}
   - name: friendly_drop_down
     properties:
       include_placeholder: true
@@ -123,4 +123,8 @@ components:
     properties: {text: '', icon: 'fa:eye-slash', align: left}
     type: Button
     layout_properties: {x: 129.140625, y: 86.140625, width: 40}
+  - name: image_1
+    properties: {}
+    type: Image
+    layout_properties: {x: 21.041662853211164, y: 368.7083536796272, width: 200}
 is_package: true
